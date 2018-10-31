@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jsp.board.service.ProductMapper">
+
+	<!-- 商品の在庫情報 select -->
+	<select id="getProductStockInfo" resultType="p">
+		SELECT *
+		FROM product
+		WHERE location = #{location} AND productserialnumber =
+		#{productserialnumber}
+	</select>
+
+	<!-- id別の買い物かごに入れたもの select -->
+	<select id="getShoppingList" resultType="sl">
+		SELECT *
+		FROM
+		shoppinglist
+		WHERE custid = #{custid}
+	</select>
+
+	<!-- ソファ・椅子・机の商品情報 select -->
+	<select id="getSCDInfo" resultType="p">
+		SELECT *
+		FROM product
+		WHERE
+		category LIKE '%scd%'
+	</select>
+
+	<!-- ベッド・マットレスの商品情報 select -->
+	<select id="getBInfo" resultType="p">
+		SELECT *
+		FROM product
+		WHERE
+		category LIKE '%b%'
+	</select>
+
+	<!-- 照明の商品情報 select -->
+	<select id="getLInfo" resultType="p">
+		SELECT *
+		FROM product
+		WHERE
+		category LIKE '%l%'
+	</select>
+
+	<!-- 商品を注文する insert -->
+	<insert id="insertOrderProduct" parameterType="op">
+		INSERT
+		INTO orderproduct
+		VALUES(#{productserialnumber},#{productname},#{amount},#{price},#{custid},#{name},#{address},#{payment})
+	</insert>
+
+	<!-- 買い物かごに入れる insert -->
+	<insert id="insertShoppinglist" parameterType="sl">
+		INSERT
+		INTO shoppinglist
+		VALUES(#{custid},#{productserialnumber},#{productname},#{amount},#{price})
+	</insert>
+
+	<!-- 買い物かごから入れた商品を削除 delete -->
+	<delete id="deleteShoppinglist">
+		DELETE
+		FROM shoppinglist
+		WHERE productserialnumber = #{productserialnumber}
+	</delete>
+
+	<!-- 注文したらデータベースから注文した数量が減少する update -->
+	<update id="updateStock">
+		UPDATE product
+		SET stock = stock - #{amount}
+		WHERE productserialnumber = #{productserialnumber}
+	</update>
+</mapper>

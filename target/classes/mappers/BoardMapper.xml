@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jsp.board.service.BoardMapper">
+	<!-- 掲示板で作成 insert -->
+	<insert id="insertBoard" parameterType="sb">
+		INSERT INTO sboard(boardnum, custid, title, content,pw)
+		VALUES (sboard_seq.nextval,#{custid}, #{title}, #{content},#{pw})
+	</insert>
+
+	<!-- 掲示板の全ての文を降順で持って来る select -->
+	<select id="selectAll" resultType="sb">
+		SELECT *
+		FROM sboard
+		ORDER BY boardnum desc
+	</select>
+
+	<!-- 掲示板で一つの文をリード select -->
+	<select id="getBoard" resultType="sb">
+		SELECT boardnum, custid, title,
+		content,
+		to_char(inputdate,'yyyy/mm/dd') as inputdate,hits,pw
+		FROM sboard
+		WHERE boardnum = #{boardnum}
+	</select>
+
+	<!-- パスワードが合うと文を修正 update -->
+	<update id="updateBoard" parameterType="sb">
+		UPDATE sboard
+		SET custid = #{custid}, title = #{title}, content = #{content}, pw =
+		#{pw}
+		WHERE pw = #{pw}
+	</update>
+
+	<!-- パスワードが合うと文を削除 delete -->
+	<delete id="deleteBoard" parameterType="string">
+		DELETE sboard
+		WHERE pw = #{pw}
+	</delete>
+
+	<!-- パスワードを確認 select -->
+	<select id="checkPw" resultType="int">
+		SELECT COUNT(*)
+		FROM sboard
+		WHERE pw = #{pw}
+	</select>
+
+	<!-- 文をクリックすると照会数が増加 update -->
+	<update id="addHits">
+		UPDATE sboard
+		SET hits = hits + 1
+		WHERE boardnum = #{boardnum}
+	</update>
+</mapper>
