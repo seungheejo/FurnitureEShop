@@ -9,31 +9,31 @@ import org.jsp.board.vo.Shoppinglist;
 
 public interface ProductMapper {
 
-	// 商品の在庫情報 select
+	// 상품 재고정보 select
 	public List<Product> getProductStockInfo(HashMap<String, String> map);
 
-	// id別の買い物かごに入れたもの select
+	// id별 장바구니에 넣은 것 select
 	public List<Shoppinglist> getShoppingList(String custid);
 
-	// ソファ・椅子・机の商品情報 select
+	// 소파・의자・책상 상품정보 select
 	public List<Product> getSCDInfo();
 
-	// ベッド・マットレスの商品情報 select
+	// 베드・매트리스 상품정보 select
 	public List<Product> getBInfo();
 
-	// 照明の商品情報 select
+	// 조명 상품정보 select
 	public List<Product> getLInfo();
 
-	// 商品を注文する insert
+	// 상품을 주문 insert
 	public int insertOrderProduct(Orderproduct op);
 
-	// 買い物かごに入れる insert
+	// 장바구니에 넣기 insert
 	public int insertShoppinglist(Shoppinglist sl);
 
-	// 買い物かごから入れた商品を削除 delete
+	// 장바구니에 넣었던 상품 삭제 delete
 	public int deleteShoppinglist(String productserialnumber);
 
-	// 注文したらデータベースから注文した数量が減少する update
+	// 주문하면 데이터베이스에서 주문한 수량만큼 감소함 update
 	public int updateStock(HashMap<String, String> map);
 
 }
