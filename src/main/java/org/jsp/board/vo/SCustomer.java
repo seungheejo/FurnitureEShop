@@ -6,7 +6,7 @@ public class SCustomer {
 	private String password;
 	private String name;
 	private String email;
-	private String division; // 개인인지 기업인지 구
+	private String division; // 개인인지 기업인지 구분
 	private String idno;
 	private String address;
 
