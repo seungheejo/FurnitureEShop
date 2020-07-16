@@ -5,25 +5,25 @@ import org.jsp.board.vo.SBoard;
 
 public interface BoardMapper {
 
-	// 掲示板で作成 insert
+	// 게시판에서 작성 insert
 	public int insertBoard(SBoard s);
 
-	// 掲示板の全ての文を降順で持って来る select
+	// 게시판의 모든 글을 가져옴 select
 	public List<SBoard> selectAll();
 
-	// 掲示板で一つの文をリード select
+	// 게시판에서 하나의 글을 가져옴 select
 	public List<SBoard> getBoard(int boardnum);
 
-	// パスワードが合うと文を修正 update
+	// 비밀번호가 맞으면 글을 수정 update
 	public int updateBoard(SBoard sb);
 
-	// パスワードが合うと文を削除 delete
+	// 비밀번호가 맞으면 글을 삭제 delete
 	public int deleteBoard(String pw);
 
-	// パスワードを確認 select
+	// 비밀번호 확인 select
 	public int checkPw(String pw);
 
-	// 文をクリックすると照会数が増加 update
+	// 글을 클릭하면 조회수가 증가 update
 	public int addHits(int boardnum);
 
 }
