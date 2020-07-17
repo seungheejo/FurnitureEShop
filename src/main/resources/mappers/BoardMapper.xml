@@ -5,20 +5,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.jsp.board.service.BoardMapper">
-	<!-- 掲示板で作成 insert -->
+	<!-- 게시판에서 작성 insert -->
 	<insert id="insertBoard" parameterType="sb">
 		INSERT INTO sboard(boardnum, custid, title, content,pw)
 		VALUES (sboard_seq.nextval,#{custid}, #{title}, #{content},#{pw})
 	</insert>
 
-	<!-- 掲示板の全ての文を降順で持って来る select -->
+	<!-- 게시판의 모든 글을 내림차순으로 가져옴 select -->
 	<select id="selectAll" resultType="sb">
 		SELECT *
 		FROM sboard
 		ORDER BY boardnum desc
 	</select>
 
-	<!-- 掲示板で一つの文をリード select -->
+	<!-- 게시판에서 하나의 글을 읽음 select -->
 	<select id="getBoard" resultType="sb">
 		SELECT boardnum, custid, title,
 		content,
@@ -27,7 +27,7 @@
 		WHERE boardnum = #{boardnum}
 	</select>
 
-	<!-- パスワードが合うと文を修正 update -->
+	<!-- 비밀번호가 맞으면 글을 수정 update -->
 	<update id="updateBoard" parameterType="sb">
 		UPDATE sboard
 		SET custid = #{custid}, title = #{title}, content = #{content}, pw =
@@ -35,20 +35,20 @@
 		WHERE pw = #{pw}
 	</update>
 
-	<!-- パスワードが合うと文を削除 delete -->
+	<!-- 비밀번호가 맞으면 글을 삭제 delete -->
 	<delete id="deleteBoard" parameterType="string">
 		DELETE sboard
 		WHERE pw = #{pw}
 	</delete>
 
-	<!-- パスワードを確認 select -->
+	<!-- 비밀번호를 확인 select -->
 	<select id="checkPw" resultType="int">
 		SELECT COUNT(*)
 		FROM sboard
 		WHERE pw = #{pw}
 	</select>
 
-	<!-- 文をクリックすると照会数が増加 update -->
+	<!-- 글을 클릭하면 조회수가 증가 update -->
 	<update id="addHits">
 		UPDATE sboard
 		SET hits = hits + 1
