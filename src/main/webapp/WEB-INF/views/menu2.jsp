@@ -43,7 +43,7 @@ body {
 <body>
 	<div class="title">
 		<a href=/board><img alt="a" src="resources/logo.png"></a>
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인 했을 경우/로그아웃, 개인정보수정, 탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님 환영합니다!</p>
 			<div class="top1">
@@ -53,7 +53,7 @@ body {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인, 회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -103,9 +103,9 @@ body {
 		</div>
 		</nav>
 	</div>
-	<!-- メニューバーエンド -->
+	<!-- 메뉴바 끝 -->
 
-	<!-- ベッド/マットレスのメニュー -->
+	<!-- 베드/매트리스 메뉴 -->
 	<div align="center">
 		<h1>침대/매트리스</h1>
 	</div>
@@ -135,7 +135,7 @@ body {
 			</form>
 		</c:forEach>
 	</div>
-	<!-- ベッド/マットレスのメニューエンド -->
+	<!-- 베드/매트리스 메뉴 끝 -->
 
 	<!-- FOOTER -->
 	<footer>
@@ -144,6 +144,6 @@ body {
 	</p>
 	<p class="pull-left">&copy; 2018 Joseunghee Company, Inc. &middot;</p>
 	</footer>
-	<!-- FOOTERエンド -->
+	<!-- FOOTER 끝 -->
 </body>
 </html>
