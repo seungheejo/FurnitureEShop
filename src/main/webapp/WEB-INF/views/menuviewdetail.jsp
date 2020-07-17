@@ -41,19 +41,19 @@ body {
 </style>
 
 <script type="text/javascript">
-	/* 一番最後に実行されること
-	 * formBtnがクリックされたらfunction check()が実行
-	 * shoppingBtnがクリックされたらfunction checkcheck()が実行
+	/* 가장 마지막에 실행되는 것
+	 * formBtn을 클릭하면 function check()가 실행
+	 * shoppingBtn을 클릭하면 function checkcheck()가 실행
 	 */
 	$(document).ready(function() {
 		$('#formBtn').on('click', check);
 		$('#shoppingBtn').on('click', checkcheck);
 	});
 
-	var sell_price; //商品一つの値段
-	var amount; //商品の数量
+	var sell_price; //상품 하나의 가격
+	var amount; //상품의 수량
 
-	//初期化
+	//초기화
 	function init() {
 
 		sell_price = document.form.sell_price.value;
@@ -63,7 +63,7 @@ body {
 		change();
 	}
 
-	//'+'ボタンをクリックすると 
+	//'+'버튼을 클릭할 경우 
 	function add() {
 
 		hm = document.form.amount;
@@ -73,21 +73,21 @@ body {
 		sum.value = parseInt(hm.value) * sell_price;
 	}
 
-	//'-'ボタンをクリックすると
+	//'-'버튼을 클릭할 경우
 	function del() {
 
 		hm = document.form.amount;
 		sum = document.form.sum;
 
-		/*数量が最小2個以上の場合
-		減少させることができる*/
+		/*수량이 최소 2개 이상일 경우 
+		감소시킬 수 있음*/
 		if (hm.value > 1) {
 			hm.value--;
 			sum.value = parseInt(hm.value) * sell_price;
 		}
 	}
 
-	//商品の数量が変わったら実行
+	//상품의 수량이 변경되면 실행
 	function change() {
 
 		hm = document.form.amount;
@@ -99,7 +99,7 @@ body {
 		sum.value = parseInt(hm.value) * sell_price;
 	}
 
-	//注文するボタンをクリックすると実行
+	//주문 버튼을 클릭하면 실행
 	function check() {
 
 		var amount = $('#amount').val();
@@ -108,13 +108,13 @@ body {
 		$('#productamount').val(amount);
 		$('#productsum').val(sum);
 		
-		//idがproductFormであるフォームのアクションに移動
+		//id가 productForm에 있는 폼의 액션으로 이동
 		var form = $('#productForm');
 		form.submit();
 
 	}
 
-	//買い物かごに入れるボタンをクリックすると実行
+	//장바구니에 넣는 버튼을 클릭하면 실행
 	function checkcheck() {
 
 		var amount = $('#amount').val();
@@ -123,7 +123,7 @@ body {
 		$('#shoppinglistamount').val(amount);
 		$('#shoppinglistsum').val(sum);
 
-		//idがshoppinglistFormであるフォームのアクションに移動
+		//id가 shoppinglistForm에 있는 폼의 액션으로 이동
 		var form = $('#shoppinglistForm');
 		form.submit();
 
@@ -131,11 +131,11 @@ body {
 </script>
 </head>
 
-<!-- このページの最初に実行 -->
+<!-- 이 페이지의 처음에 실행 -->
 <body onload="init();">
 	<div class="title">
 		<a href=/board><img alt="a" src="resources/logo.png"></a>
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인 했을 경우/로그아웃, 개인정보수정, 탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님환영합니다!</p>
 			<div class="top1">
@@ -145,7 +145,7 @@ body {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인, 회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -157,7 +157,7 @@ body {
 	<br>
 	<br>
 
-	<!-- メニューバー -->
+	<!-- 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -194,9 +194,9 @@ body {
 		</div>
 		</nav>
 	</div>
-	<!-- メニューバーエンド -->
+	<!-- 메뉴바 끝 -->
 
-	<!-- ソファ/椅子/机の商品情報 -->
+	<!-- 소파/의자/책상 상품정보 -->
 	<c:if test="${category == 'scd' }">
 		<div class="row featurette">
 			<div class="col-md-7">
@@ -249,9 +249,9 @@ body {
 			</div>
 		</div>
 	</c:if>
-	<!-- ソファ/椅子/机の商品情報エンド -->
+	<!-- 소파/의자/책상 상품정보 끝 -->
 
-	<!-- ベッド/マットレスの商品情報 -->
+	<!-- 베드/매트리스 상품정보 -->
 	<c:if test="${category == 'b' }">
 		<div class="row featurette">
 			<div class="col-md-7">
@@ -304,9 +304,9 @@ body {
 			</div>
 		</div>
 	</c:if>
-	<!-- ベッド/マットレスの商品情報エンド -->
+	<!-- 베드/매트리스 상품정보 끝 -->
 
-	<!-- 照明の商品情報 -->
+	<!-- 조명 상품정보 -->
 	<c:if test="${category == 'l' }">
 		<div class="row featurette">
 			<div class="col-md-7">
@@ -359,7 +359,7 @@ body {
 			</div>
 		</div>
 	</c:if>
-	<!-- 照明の商品情報エンド -->
+	<!-- 조명 상품정보 끝 -->
 
 	<!-- FOOTER -->
 	<footer>
@@ -368,6 +368,6 @@ body {
 	</p>
 	<p>&copy; 2018 Joseunghee Company, Inc. &middot;</p>
 	</footer>
-	<!-- FOOTERエンド -->
+	<!-- FOOTER 끝 -->
 </body>
 </html>
