@@ -27,19 +27,19 @@
 
 	<context:component-scan base-package="org.jsp.board" />
 
-	<!-- ログインインターセプター -->
+	<!-- 로그인 인터셉터 -->
 	<beans:bean id="loginInterceptor" class="org.jsp.board.interceptor.LoginInterceptor"></beans:bean>
 
-	<!-- ログインインターセプタを通じて処理する経路を設定 -->
+	<!-- 로그인 인터셉터를 통해 처리 경로를 설정 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<!-- 文を作成の場合 -->
+			<!-- 글을 작성할 경우 -->
 			<mvc:mapping path="/writeBoard" />
-			<!-- 注文する場合 -->
+			<!-- 주문하는 경우 -->
 			<mvc:mapping path="/gobuy" />
-			<!-- 買い物のページの場合 -->
+			<!-- 장바구니 페이지일 경우 -->
 			<mvc:mapping path="/goshoppingbasket" />
-			<!-- 買い物かごに入れる場合 -->
+			<!-- 장바구니에 넣는 경우 -->
 			<mvc:mapping path="/putproduct" />
 			<beans:ref bean="loginInterceptor" />
 		</mvc:interceptor>
