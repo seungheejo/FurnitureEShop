@@ -14,7 +14,7 @@ body {
 	color: #5a5a5a;
 }
 
-/*メニューバー*/
+/*메뉴바*/
 .navbar-wrapper {
 	position: absolute;
 	top: 0;
@@ -37,7 +37,7 @@ body {
 	width: auto;
 }
 
-/*メニューの下の動くイメージ*/
+/*메뉴 아래에서 움직이는 이미지*/
 .carousel {
 	height: 500px;
 	margin-bottom: 60px;
@@ -60,7 +60,7 @@ body {
 	height: 500px;
 }
 
-/*イメージと文章*/
+/*이미지, 문장*/
 .featurette-divider {
 	margin: 80px 0;
 }
@@ -113,12 +113,12 @@ body {
 </style>
 
 <script type="text/javascript">
-	//パスワード確認のために新しいウィンドウを作る
+	//비밀번호 확인을 위하여 새로운 윈도우창을 만듬
 	function checkpassword() {
 		window.open("checkpassword", "checkpw", "width=500px, height=300px");
 	}
 	
-	//メンバー脱退のために新しいウィンドウを作る
+	//회원탈퇴를 위해 새로운 윈도우창을 만듬
 	function deletemember() {
 		window.open("deletemember", "deletem", "width=500px, height=300px");
 	}
@@ -130,9 +130,9 @@ body {
 
 <body>
 	<div class="title">
-		<!-- 一番上である会社のロゴ -->
+		<!-- 가장 위에 있는 회사로고 -->
 		<img alt="a" src="resources/logo.png">
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인했을 경우/로그아웃、개인정보수정、탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님 환영합니다!</p>
 			<div class="top1">
@@ -142,7 +142,7 @@ body {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인、회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -154,7 +154,7 @@ body {
 	<br>
 	<br>
 
-	<!-- Navbar メニューバー -->
+	<!-- Navbar 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
@@ -191,9 +191,9 @@ body {
 			</div>
 		</nav>
 	</div>
-	<!-- Navbar メニューバー エンド -->
+	<!-- Navbar 메뉴바 끝 -->
 
-	<!-- Carousel メニューの下の動くイメージ -->
+	<!-- Carousel 메뉴 아래에 움직이는 이미지 -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -223,9 +223,9 @@ body {
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<!-- Carousel メニューの下の動くイメージ エンド -->
+	<!-- Carousel 메뉴 아래에 움직이는 이미지 끝 -->
 
-	<!-- Featurette イメージと文章 -->
+	<!-- Featurette 이미지, 문장 -->
 	<div class="container marketing">
 		<hr class="featurette-divider">
 
@@ -273,22 +273,22 @@ body {
 		</div>
 
 		<hr class="featurette-divider">
-		<!-- Featurette イメージと文章 エンド -->
+		<!-- Featurette 이미지, 문장 끝 -->
 
 
-		<!-- FOOTER 一番下であるもの/上の戻る機能、会社の情報 -->
+		<!-- FOOTER 가장 아래에 있는 것/위로 돌아가는 기능, 회사 정보 -->
 		<footer>
 			<p class="pull-right">
 				<a href="#">상위로 올라가기</a>
 			</p>
 			<p>&copy; 2018 Joseunghee Company, Inc. &middot;</p>
 		</footer>
-		<!-- FOOTER 一番下であるもの エンド -->
+		<!-- FOOTER 가장 아래에 있는 것 끝 -->
 
 	</div>
 
 	<!-- Bootstrap core JavaScript -->
-	<!-- ページ読み込みを速くするために、ドキュメントの最後に配置します。-->
+	<!-- 페이지 읽기를 빠르게 하기 위해 문서의 끝에 배치-->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="resources/bootstrap-3.3.2/js/bootstrap.min.js"></script>
