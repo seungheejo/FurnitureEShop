@@ -47,7 +47,7 @@ public class BoardController {
 		return "readBoard";
 	}
 
-	// 작성가능한 홈이 있는 페이지로 이동
+	// 작성가능한 폼이 있는 페이지로 이동
 	@RequestMapping(value = "writeBoard", method = RequestMethod.POST)
 	public String write() {
 
