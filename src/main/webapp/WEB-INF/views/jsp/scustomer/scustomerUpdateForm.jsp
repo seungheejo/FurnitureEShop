@@ -11,8 +11,8 @@
 	rel="stylesheet">
 
 <script type="text/javascript">
-/*bodyの内容を全部実行した後で
-どんなラジオボタンが選択されたかを持って来る*/
+/*body의 내용을 전부 실행한 후에 
+어떤 라디오 버튼이 선택되었는지 가져옴*/
 window.onload = function(){
 		if(${customer.division == 'personal'}){
 			document.getElementById("divisionP").checked = true;
@@ -21,7 +21,7 @@ window.onload = function(){
 		}
 } 
 
-//有効するかのチェック
+//유효성 체크
 function checkvalue(){
 
 	var password = document.getElementById("password").value;
@@ -115,7 +115,7 @@ body {
 
 <body>
 
-	<!-- 個人情報修正のフォーム -->
+	<!-- 개인정보수정 폼 -->
 	<div class="col-md-8 order-md-1">
 		<h4 class="h3 mb-3 font-weight-normal" align="center">개인정보수정</h4>
 		<br>
@@ -183,7 +183,7 @@ body {
 			<hr class="mb-4">
 			<button class="btn btn-primary btn-lg btn-block" type="submit">수정</button>
 		</form>
-		<!-- 個人情報修正のフォームエンド -->
+		<!-- 개인정보수정 폼 끝 -->
 
 		<footer class="my-5 pt-5 text-muted text-center text-small">
 		<p class="mb-1">&copy; Jokea</p>
