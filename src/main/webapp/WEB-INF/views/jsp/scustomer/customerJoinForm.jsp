@@ -10,11 +10,11 @@
 
 <script type="text/javascript">
 	function idcheckform() {
-		//idがもうあるか確認するために新しいウィンドウを作る
+		//id가 이미 있는지 확인하기 위해 새로운 윈도우창을 만듬
 		window.open("idcheckform", "newwin", "width=300, height=200");
 	}
 	
-	//有効するかのチェック
+	//유효한지 체크
 	function checkvalue() {
 		
 		var custid = document.getElementById("custid").value;
@@ -114,7 +114,7 @@ body {
 
 <body>
 
-<!-- 会員加入のフォーム -->
+<!-- 회원가입 폼 -->
 	<div class="col-md-8 order-md-1">
 		<h4 class="h3 mb-3 font-weight-normal" align="center">회원가입</h4>
 		<br>
@@ -187,7 +187,7 @@ body {
 			<hr class="mb-4">
 			<button class="btn btn-primary btn-lg btn-block" type="submit">가입</button>
 		</form>
-<!-- 会員加入のフォームエンド -->
+<!-- 회원가입 폼 끝 -->
 
 		<footer class="my-5 pt-5 text-muted text-center text-small">
 		<p class="mb-1">&copy; Jokea</p>
