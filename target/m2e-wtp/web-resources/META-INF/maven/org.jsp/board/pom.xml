@@ -14,7 +14,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	
-	<!-- ojdbc6 maven 追加 -->
+	<!-- ojdbc6 maven 추가 -->
 	<repositories>
 		<repository>
 			<id>oracle</id>
@@ -135,7 +135,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- ojdbc6 maven 追加 -->
+		<!-- ojdbc6 maven 추가 -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
