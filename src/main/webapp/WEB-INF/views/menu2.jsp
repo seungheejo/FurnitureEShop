@@ -66,7 +66,7 @@ body {
 	<br>
 	<br>
 
-	<!--  -->
+	<!-- 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
