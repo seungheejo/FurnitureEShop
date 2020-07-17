@@ -31,12 +31,12 @@ public class ProductController {
 
 	ArrayList<Shoppinglist> slList = new ArrayList<Shoppinglist>();
 
-	// ソファ・椅子・机のメニュー
+	// 소파・의자・책상 메뉴
 	@RequestMapping(value = "menu1", method = RequestMethod.GET)
 	public String menu1(Model model) {
 
 		/*
-		 * データベースからソファ・椅子・机の商品情報を持って来て リストに入れる
+		 * 데이터베이스로부터 소파・의자・책상 상품정보를 가져와서 리스트에 넣음
 		 */
 		scdList = (ArrayList) pdao.getSCDInfo();
 		model.addAttribute("scdList", scdList);
@@ -44,12 +44,12 @@ public class ProductController {
 		return "menu1";
 	}
 
-	// ベッド・マットレスのメニュー
+	// 베드・매트리스 메뉴
 	@RequestMapping(value = "menu2", method = RequestMethod.GET)
 	public String menu2(Model model) {
 
 		/*
-		 * データベースからベッド・マットレスの商品情報を持って来て リストに入れる
+		 * 데이터베이스로부터 베드・매트리스의 상품정보를 가져와서 리스트에 넣음
 		 */
 		bList = (ArrayList) pdao.getBInfo();
 		model.addAttribute("bList", bList);
@@ -57,12 +57,12 @@ public class ProductController {
 		return "menu2";
 	}
 
-	// 照明のメニュー
+	// 조명 메뉴
 	@RequestMapping(value = "menu3", method = RequestMethod.GET)
 	public String menu3(Model model) {
 
 		/*
-		 * データベースから照明の商品情報を持って来て リストに入れる
+		 * 데이터베이스로부터 조명 상품정보를 가져와서 리스트에 넣음
 		 */
 		lList = (ArrayList) pdao.getLInfo();
 		model.addAttribute("lList", lList);
@@ -70,14 +70,14 @@ public class ProductController {
 		return "menu3";
 	}
 
-	// 商品在庫の確認のページに移動
+	// 상품재고 확인 페이지로 이동
 	@RequestMapping(value = "checkcheck", method = RequestMethod.GET)
 	public String stockcheck() {
 
 		return "stockcheck";
 	}
 
-	// 商品在庫の確認の結果を見る
+	// 상품재고 확인의 결과를 봄
 	@RequestMapping(value = "gostockcheck", method = RequestMethod.GET)
 	public String gostockcheck(Model model, String productserialnumber, String location) {
 
@@ -92,7 +92,7 @@ public class ProductController {
 		return "stockcheck";
 	}
 
-	// View detailsボタンをクリックすると商品情報を見る
+	// View details버튼을 클릭해서 상품정보를 봄
 	@RequestMapping(value = "goviewdetail", method = RequestMethod.GET, produces = "application/text;charset=utf8")
 	public String goviewdetail(String status, String category, String productserialnumber, int price, int stock,
 			String location, String productname, Model model) {
@@ -106,7 +106,7 @@ public class ProductController {
 		return "menuviewdetail";
 	}
 
-	// 注文書のページに移動
+	// 주문서 페이지로 이동
 	@RequestMapping(value = "gobuy", method = RequestMethod.GET)
 	public String gobuy(Model model, String productname, String productserialnumber, int amount, int price) {
 
@@ -118,7 +118,7 @@ public class ProductController {
 		return "billingForm";
 	}
 
-	// 注文書から情報を持って来る
+	// 주문서 정보를 가져옴
 	@RequestMapping(value = "buyproduct", method = RequestMethod.GET)
 	public String buyproduct(Model model, Orderproduct op, String amount, String productserialnumber,
 			HttpServletResponse resp) throws IOException {
@@ -136,10 +136,10 @@ public class ProductController {
 		map.put("amount", amount);
 		map.put("productserialnumber", productserialnumber);
 
-		// 注文した数量がデータベースの商品在庫から減少される
+		// 주문한 수량만큼 데이터베이스의 상품재고를 감소시킴
 		pdao.updateStock(map);
 
-		// 注文が成功したらalertを作ってメインページに戻る
+		// 주문에 성공하면 alert를 만들어 메인 페이지로 돌아감
 		if (result != 0) {
 
 			out.println("<script language='javascript'>");
@@ -153,7 +153,7 @@ public class ProductController {
 		return "gobuy";
 	}
 
-	// 買い物かごのページに移動
+	// 장바구니 페이지로 이동
 	@RequestMapping(value = "goshoppingbasket", method = RequestMethod.GET)
 	public String goshoppingbasket(HttpSession session, Model model) {
 
@@ -165,11 +165,11 @@ public class ProductController {
 		return "shoppingbasket";
 	}
 
-	// 買い物かごに入れる
+	// 장바구니에 넣음
 	@RequestMapping(value = "putproduct", method = RequestMethod.GET)
 	public String putproduct(HttpSession session, Shoppinglist sl, Model model) {
 
-		// データベースと買い物かごのリストに情報を追加
+		// 데이터베이스와 장바구니 리스트에 정보를 추가
 		String custid = (String) session.getAttribute("loginid");
 		slList = (ArrayList) pdao.getShoppingList(custid);
 
@@ -179,11 +179,11 @@ public class ProductController {
 
 		pdao.insertShoppinglist(sl);
 
-		// 変更された情報を適用したページを見るために
+		// 변경된 정보를 적용한 페이지를 보기위해
 		return "redirect:goshoppingbasket";
 	}
 
-	// 買い物かごから商品を削除
+	// 장바구니에 있는 상품을 삭제
 	@RequestMapping(value = "deleteshoppingbasket", method = RequestMethod.GET)
 	public String deleteshoppingbasket(Shoppinglist sl, HttpSession session, String productserialnumber, Model model) {
 
