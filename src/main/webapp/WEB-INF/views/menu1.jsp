@@ -43,7 +43,7 @@ body {
 <body>
 	<div class="title">
 		<a href=/board><img alt="a" src="resources/logo.png"></a>
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인 했을 경우/로그아웃, 개인정보수정, 탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님 환영합니다!</p>
 			<div class="top1">
@@ -53,7 +53,7 @@ body {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인, 회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -66,7 +66,7 @@ body {
 	<br>
 	<br>
 
-	<!-- メニューバー -->
+	<!-- 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -103,9 +103,9 @@ body {
 		</div>
 		</nav>
 	</div>
-	<!-- メニューバーエンド -->
+	<!-- 메뉴바 끝 -->
 
-	<!-- ソファ/椅子/机のメニュー -->
+	<!-- 소파/의자/책상 메뉴 -->
 	<div align="center">
 		<h1>소파/의자/책상</h1>
 	</div>
@@ -115,9 +115,9 @@ body {
 		<c:forEach var="list" items="${scdList}" varStatus="status">
 			<form action="goviewdetail" method="get">
 				<div class="col-lg-4">
-					<!-- データベースの商品情報とイメージをマッチングしておく -->
-					<!-- イメージファイル名の終わりを数字で設定して
-				1から順番に持ってくる -->
+					<!-- 데이터베이스의 상품정보와 이미지를 매치시켜 놓음 -->
+					<!-- 이미지 파일명의 끝을 숫자로 설정해서 
+				1부터 순서대로 가져옴 -->
 					<img src="resources/sofa-chair-desk/c${status.count }.JPG" alt="a"
 						width="250" height="250">
 					<h2>${list.productname }</h2>
@@ -138,7 +138,7 @@ body {
 			</form>
 		</c:forEach>
 	</div>
-	<!-- ソファ/椅子/机のメニューエンド -->
+	<!-- 소파/의자/책상 메뉴 끝 -->
 
 	<!-- FOOTER -->
 	<footer>
@@ -147,7 +147,7 @@ body {
 	</p>
 	<p class="pull-left">&copy; 2018 Joseunghee Company, Inc. &middot;</p>
 	</footer>
-	<!-- FOOTERエンド -->
+	<!-- FOOTER 끝 -->
 
 </body>
 </html>
