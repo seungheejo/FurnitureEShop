@@ -23,7 +23,7 @@ public class BoardController {
 
 	ArrayList<SBoard> sList = new ArrayList<SBoard>();
 
-	// お問い合わせのページに移動
+	// 문의 페이지로 이동
 	@RequestMapping(value = "visit", method = RequestMethod.GET)
 	public String visit(HttpSession session, Model model) {
 
@@ -34,7 +34,7 @@ public class BoardController {
 		return "listBoard";
 	}
 
-	// boardnumによって掲示板の文を見る
+	// boardnum에 따라 게시판의 글을 봄
 	@RequestMapping(value = "readBoard", method = RequestMethod.GET)
 	public String readBoard(HttpSession session, int boardnum, Model model) {
 
@@ -47,18 +47,18 @@ public class BoardController {
 		return "readBoard";
 	}
 
-	// 作成できるフォームがあるページに移動
+	// 작성가능한 홈이 있는 페이지로 이동
 	@RequestMapping(value = "writeBoard", method = RequestMethod.POST)
 	public String write() {
 
 		return "recordForm";
 	}
 
-	// 掲示板に文を作成して登録する
+	// 게시판에 글을 작성하고 등록함
 	@RequestMapping(value = "recordVisit", method = RequestMethod.POST)
 	public String record(Model model, HttpSession session, SBoard s) {
 
-		// 文の情報をリストとデータベースに入れる
+		// 글의 정보를 리스트와 데이터베이스에 넣음
 		sList = (ArrayList) dao.selectAll();
 
 		session.getAttribute("sList");
@@ -76,7 +76,7 @@ public class BoardController {
 		return "redirect:visit";
 	}
 
-	// 文を削除
+	// 글을 삭제
 	@RequestMapping(value = "deleteBoard", method = RequestMethod.POST)
 	public String delete(Model model, SBoard s, HttpSession session, String pw) {
 
@@ -92,14 +92,14 @@ public class BoardController {
 		return "redirect:visit";
 	}
 
-	// 文をアップデートするページに移動
+	// 글을 업데이트하는 페이지로 이동
 	@RequestMapping(value = "goupdateform", method = RequestMethod.POST)
 	public String goupdateBoard(SBoard sb, Model model) {
 
 		return "updateBoardForm";
 	}
 
-	// 修正した文の情報をアップデート
+	// 수정한 글의 정보를 업데이트
 	@RequestMapping(value = "updateBoard", method = RequestMethod.POST)
 	public String updateBoard(HttpSession session, Model model, SBoard sb, HttpServletResponse resp)
 			throws IOException {
