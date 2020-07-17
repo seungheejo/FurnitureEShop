@@ -21,7 +21,7 @@ public class SCustomerController {
 	@Inject
 	SCustomerDAO sdao;
 
-	// 会員加入のページに移動
+	// 회원가입 페이지로 이동
 	@RequestMapping("/gojoinform")
 	public String gojoinform() {
 
@@ -29,7 +29,7 @@ public class SCustomerController {
 
 	}
 
-	// idチェックのためのウィンドウに移動
+	// id체크하기위한 윈도우 창으로 이동
 	@RequestMapping("/idcheckform")
 	public String idcheckform() {
 
@@ -37,14 +37,14 @@ public class SCustomerController {
 
 	}
 
-	// idチェックのウィンドウで確認すると
+	// id체크용 윈도우에서 확인하면
 	@RequestMapping("/idcheck")
 	public String idcheck(Model model, String custid) {
 
 		String idok = sdao.checkId(custid);
 
 		if (idok != null) {
-			// データベースでidがもうある場合は利用できない
+			// 데이터베이스에 id가 이미 있는 경우는 이용할 수 없음
 			model.addAttribute("idok", false);
 		} else {
 			model.addAttribute("idok", true);
@@ -55,7 +55,7 @@ public class SCustomerController {
 		return "/jsp/scustomer/idcheckform";
 	}
 
-	// 会員の情報を持って来る
+	// 회원정보를 가져옴
 	@RequestMapping(value = "/joincustomer", method = RequestMethod.POST)
 	public String joincustomer(SCustomer sc, Model model, String custid, String password, String name, String email,
 			String division, String idno, String address) {
@@ -65,14 +65,14 @@ public class SCustomerController {
 
 		model.addAttribute("sc");
 
-		// データベースに保存して
+		// 데이터베이스에 저장
 		sdao.joinCustomer(sc);
 
-		// メインページに戻る
+		// 메인 페이지로 돌아감
 		return "home";
 	}
 
-	// ログインのページに移動
+	// 로그인 페이지로 이동
 	@RequestMapping("/gologinform")
 	public String gologinform() {
 
@@ -80,7 +80,7 @@ public class SCustomerController {
 
 	}
 
-	// ログインの情報を持って来る
+	// 로그인 정보를 가져옴
 	@RequestMapping("/login")
 	public String login(HttpSession session, SCustomer sc, HttpServletResponse resp) throws IOException {
 
@@ -98,7 +98,7 @@ public class SCustomerController {
 		} else {
 
 			/*
-			 * ログインが失敗した場合、 alertを作ってログインページに戻る
+			 * 로그인에 실패했을 경우, alert를 만들어 로그인 페이지로 돌아감
 			 */
 			out.println("<script language='javascript'>");
 			out.println("alert('정보가 맞지않습니다. 다시 로그인 해주세요.');");
@@ -110,40 +110,40 @@ public class SCustomerController {
 
 	}
 
-	// ログアウトボタンをクリックすると
+	// 로그아웃 버튼을 클릭하면
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 
-		// セッションでloginidを削除
+		// 세션에서 loginid를 삭제
 		session.removeAttribute("loginid");
 
 		return "redirect:./";
 	}
 
-	// パスワードチェックのページに移動
+	// 비밀번호 체크 페이지로 이동
 	@RequestMapping("/checkpassword")
 	public String checkpassword() {
 
 		return "/jsp/scustomer/checkpassword";
 	}
 
-	// IDとパスワードをもらってログイン
+	// ID, 비밀번호를 받아서 로그인
 	@RequestMapping("/confirmupdate")
 	public String confirmupdate(SCustomer sc, HttpSession session) {
 		sc = sdao.login(sc);
 
-		// ログインが成功したらアトリビュート設定
+		// 로그인 성공하면 어트리뷰트 설정
 		if (sc != null) {
 			session.setAttribute("customer", sc);
 		} else {
 			session.removeAttribute("customer");
 		}
 
-		// ログインの結果をconfirmresultにリターン
+		// 로그인 결과를 confirmresult에 리턴
 		return "/jsp/scustomer/confirmresult";
 	}
 
-	// 個人情報修正のページに移動
+	// 개인정보수정 페이지로 이동
 	@RequestMapping("/goupdateform")
 	public String goupdateform() {
 
@@ -151,7 +151,7 @@ public class SCustomerController {
 	}
 
 	/*
-	 * 修正された情報を持って来て データベースをアップデート
+	 * 수정된 정보를 가져와서 데이터베이스를 업데이트
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(SCustomer sc, Model model) {
@@ -162,14 +162,14 @@ public class SCustomerController {
 		return "redirect:./";
 	}
 
-	// 脱退のためのパスワード確認ページに移動
+	// 탈퇴하기 위한 비밀번호 확인 페이지로 이동
 	@RequestMapping("/deletemember")
 	public String deletemember() {
 
 		return "/jsp/scustomer/deletemember";
 	}
 
-	// IDとパスワードをもらって脱退
+	// ID, 비밀번호를 받아서 탈퇴
 	@RequestMapping(value = "/confirmdelete", method = RequestMethod.POST)
 	public String confirmdelete(String password, HttpSession session) {
 
@@ -181,7 +181,7 @@ public class SCustomerController {
 
 		int result = sdao.deleteCustomer(map);
 
-		// 脱退ができたらloginidのアトリビュートを削除
+		// 탈퇴가 되면 loginid의 어트리뷰트를 삭제
 		if (result != 0) {
 			session.removeAttribute("loginid");
 		}
