@@ -11,7 +11,7 @@
 	
 <script type="text/javascript">
 function useThisId(custid){
-	//利用できるcustidを持ってopener(customerJoinForm)に戻る
+	//사용가능한 custid를 가지고 opener(customerJoinForm)로 돌아감
 	opener.document.getElementById("custid").value=custid;
 	window.close();
 	
