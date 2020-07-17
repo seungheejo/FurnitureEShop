@@ -85,7 +85,7 @@ to {
 </style>
 
 <script type="text/javascript">
-  //パスワードをまた入力して掲示板の文を削除
+  //비밀번호를 한번 더 입력해서 게시판의 글을 삭제
   function deletecheck(){
 	  
 	  var inputpw = prompt('비밀번호를 입력해주세요');
@@ -101,7 +101,7 @@ to {
 	  
   }
   
-//パスワードをまた入力して掲示板の文をアップデート
+//비밀번호를 한번 더 입력해서 게시판의 글을 업데이트
   function updatecheck(){
 	  
 	  var inputpw = prompt('비밀번호를 입력해주세요');
@@ -121,7 +121,7 @@ to {
 <body>
 	<div class="title">
 		<a href=/board><img alt="a" src="resources/logo.png"></a>
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인 했을 경우/로그아웃, 개인정보수정, 탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님 환영합니다!</p>
 			<div class="top1">
@@ -131,7 +131,7 @@ to {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인, 회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -144,7 +144,7 @@ to {
 	<br>
 	<br>
 
-	<!-- メニューバー -->
+	<!-- 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -181,9 +181,9 @@ to {
 		</div>
 		</nav>
 	</div>
-	<!-- メニューバーエンド -->
+	<!-- 메뉴바 끝 -->
 
-	<!-- 文の情報 -->
+	<!-- 게시글 -->
 	<div class="container">
 		<table class="table table-bordered">
 			<tbody>
@@ -234,6 +234,6 @@ to {
 			</tbody>
 		</table>
 	</div>
-	<!-- 文の情報エンド -->
+	<!-- 게시글 정보  -->
 </body>
 </html>
