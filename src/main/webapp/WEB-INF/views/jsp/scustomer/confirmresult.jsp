@@ -7,9 +7,9 @@
 <title>confirmresult</title>
 
 <script type="text/javascript">
-if(!${empty customer}){ // ログイン成功したらempty customerはfalse 
-	/*ログインの結果がtrueの場合
-	個人情報修正の画面に移動*/
+if(!${empty customer}){ // 로그인 성공하면 empty customer는 false 
+	/*로그인 결과가 true일 경우 
+	개인정보수정 화면으로 이동*/
 	alert('비밀번호 확인 업데이트 화면으로 이동');
 	opener.location.href="goupdateform";
 	window.close();
