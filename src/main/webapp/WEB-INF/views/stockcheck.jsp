@@ -41,7 +41,7 @@ body {
 </style>
 
 <script type="text/javascript">
-	//有効するかのチェック
+	//유효성 체크
 	function check() {
 
 		var productserialnumber = $('#productserialnumber').val();
@@ -65,7 +65,7 @@ body {
 <body>
 	<div class="title">
 		<a href=/board><img alt="a" src="resources/logo.png"></a>
-		<!-- ログインする場合/ログアウト、個人情報修正、脱退ができる-->
+		<!-- 로그인 했을 경우/로그아웃, 개인정보수정, 탈퇴가 가능-->
 		<c:if test="${loginid != null }">
 			<p align="right">${loginid }님환영합니다!</p>
 			<div class="top1">
@@ -75,7 +75,7 @@ body {
 			</div>
 		</c:if>
 
-		<!-- ログインしない場合/ログイン、メンバー登録ができる -->
+		<!-- 로그인 안했을 경우/로그인, 회원등록이 가능 -->
 		<c:if test="${loginid == null }">
 			<div class="top1">
 				<a href="gologinform" style="color: #5a5a5a;">로그인</a> | <a
@@ -88,7 +88,7 @@ body {
 	<br>
 	<br>
 
-	<!-- メニューバー -->
+	<!-- 메뉴바 -->
 	<div class="container" style="width: 100%">
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -125,9 +125,9 @@ body {
 		</div>
 		</nav>
 	</div>
-	<!-- メニューバーエンド -->
+	<!-- 메뉴바 끝 -->
 
-	<!-- 商品在庫の確認のフォーム -->
+	<!-- 상품재고 확인 폼 -->
 	<form action="gostockcheck" onsubmit="return check()">
 		<div align="center">
 			<h1>제품재고 확인</h1>
@@ -168,6 +168,6 @@ body {
 				<label>재고 : </label>${list.stock}</div>
 		</c:if>
 	</c:forEach>
-	<!-- 商品在庫の確認のフォームエンド -->
+	<!-- 상품재고 확인 폼 끝 -->
 </body>
 </html>
